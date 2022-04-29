@@ -1,0 +1,34 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="initializes_loop" id="3" x="38" y="38">
+    <statement name="CONTENT">
+      <block type="controls_if" id="4" inline="false">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="5" inline="true">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="inout_digital_read" id="6">
+                <field name="PIN">13</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_boolean" id="7">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="inout_buildin_led" id="8">
+            <field name="STAT">HIGH</field>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="inout_buildin_led" id="9">
+            <field name="STAT">LOW</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

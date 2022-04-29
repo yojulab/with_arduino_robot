@@ -1,0 +1,89 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="initializes_setup" id="3" x="10" y="10">
+    <statement name="CONTENT">
+      <block type="linkit_ble_periphral" id="4" inline="false">
+        <value name="NAME">
+          <block type="text" id="5">
+            <field name="TEXT">LinkIt 7697</field>
+          </block>
+        </value>
+        <value name="SERVICE">
+          <block type="text" id="6">
+            <field name="TEXT">951A6899-6F0F-456F-8AE0-5E0B4352D85B</field>
+          </block>
+        </value>
+        <statement name="BLE_CONTENT">
+          <block type="linkit_ble_Characteristic" id="7" inline="false">
+            <field name="CHARACTERISTIC_TYPE">LBLECharacteristicInt</field>
+            <field name="TYPE">LBLE_WRITE</field>
+            <value name="CHARACTERISTIC">
+              <block type="text" id="8">
+                <field name="TEXT">B77D53AC-D590-41E0-B75A-6DA442F543F6</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <next>
+      <block type="initializes_loop" id="9">
+        <statement name="CONTENT">
+          <block type="delay_custom" id="10" inline="false">
+            <value name="DELAY_TIME">
+              <block type="math_number" id="11">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="12" inline="false">
+                <value name="IF0">
+                  <block type="linkit_ble_periphral_is_written" id="13" inline="false">
+                    <value name="CHARACTERISTIC">
+                      <block type="text" id="14">
+                        <field name="TEXT">B77D53AC-D590-41E0-B75A-6DA442F543F6</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="15" inline="false">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="16" inline="true">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="linkit_ble_periphral_get_value" id="17" inline="false">
+                            <value name="CHARACTERISTIC">
+                              <block type="text" id="18">
+                                <field name="TEXT">B77D53AC-D590-41E0-B75A-6DA442F543F6</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="19">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="inout_buildin_led" id="20">
+                        <field name="STAT">LOW</field>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="inout_buildin_led" id="21">
+                        <field name="STAT">HIGH</field>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>
